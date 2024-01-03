@@ -309,7 +309,8 @@ var OpAttributeSanitizer = (function () {
             if (val &&
                 (OpAttributeSanitizer.IsValidHexColor(val + '') ||
                     OpAttributeSanitizer.IsValidColorLiteral(val + '') ||
-                    OpAttributeSanitizer.IsValidRGBColor(val + ''))) {
+                    OpAttributeSanitizer.IsValidRGBColor(val + '') ||
+                    OpAttributeSanitizer.IsValidCSSVar(val + ''))) {
                 cleanAttrs[prop] = val;
             }
         });
@@ -382,6 +383,10 @@ var OpAttributeSanitizer = (function () {
     };
     OpAttributeSanitizer.IsValidRGBColor = function (colorStr) {
         var re = /^rgb\(((0|25[0-5]|2[0-4]\d|1\d\d|0?\d?\d),\s*){2}(0|25[0-5]|2[0-4]\d|1\d\d|0?\d?\d)\)$/i;
+        return !!colorStr.match(re);
+    };
+    OpAttributeSanitizer.IsValidCSSVar = function (colorStr) {
+        var re = /^var\(--[a-z\-]+\)$/i;
         return !!colorStr.match(re);
     };
     OpAttributeSanitizer.IsValidFontName = function (fontName) {
