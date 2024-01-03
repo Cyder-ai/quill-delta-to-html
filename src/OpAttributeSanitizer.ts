@@ -113,7 +113,6 @@ class OpAttributeSanitizer {
       }
     });
 
-    console.log('aaaaaaa');
     colorAttrs.forEach(function (prop: string) {
       var val = (<any>dirtyAttrs)[prop];
       if (
@@ -123,7 +122,6 @@ class OpAttributeSanitizer {
           OpAttributeSanitizer.IsValidRGBColor(val + '') ||
           OpAttributeSanitizer.IsValidCSSVar(val + ''))
       ) {
-        console.log('bbbbbbbb');
         cleanAttrs[prop] = val;
       }
     });
