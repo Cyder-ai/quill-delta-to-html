@@ -48,6 +48,7 @@ var OpAttributeSanitizer = (function () {
                 cleanAttrs[prop] = !!v;
             }
         });
+        console.log('aaaaaaa');
         colorAttrs.forEach(function (prop) {
             var val = dirtyAttrs[prop];
             if (val &&
@@ -55,6 +56,7 @@ var OpAttributeSanitizer = (function () {
                     OpAttributeSanitizer.IsValidColorLiteral(val + '') ||
                     OpAttributeSanitizer.IsValidRGBColor(val + '') ||
                     OpAttributeSanitizer.IsValidCSSVar(val + ''))) {
+                console.log('bbbbbbbb');
                 cleanAttrs[prop] = val;
             }
         });
